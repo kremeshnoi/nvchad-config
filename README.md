@@ -8,9 +8,13 @@ I created this repository to maintain a consistent and efficient Neovim setup ac
 
 ## Setup Instructions
 
-### Prerequisites
+### Pre-requisites
 
-Before setting up this config, ensure that you have [Neovim](https://neovim.io/) installed on your system.
+* [Neovim 0.10](https://github.com/neovim/neovim/releases/tag/v0.10.0)
+* [Nerd Font](https://www.nerdfonts.com/) as your terminal font
+* [Ripgrep](https://github.com/BurntSushi/ripgrep) is required for grep searching with Telescope (OPTIONAL)
+
+Reference and additional info - https://nvchad.com/docs/quickstart/install/
 
 ### Installation
 
