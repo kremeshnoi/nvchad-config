@@ -2,7 +2,6 @@ return {
 	-- Formatters & Linters
 	{
 		"stevearc/conform.nvim",
-		lazy = false,
 		event = "BufWritePre",
 		config = function()
 			require("configs.conform")
@@ -106,13 +105,6 @@ return {
 
 	-- UI Enhancements
 	{
-		"NvChad/base46",
-		lazy = false,
-		config = function()
-			require("base46").load_all_highlights()
-		end,
-	},
-	{
 		"stevearc/dressing.nvim",
 		lazy = false,
 		opts = {},
@@ -193,8 +185,12 @@ return {
 
 	-- Miscellaneous Helpers
 	{
+		"wakatime/vim-wakatime",
+		lazy = false,
+	},
+	{
 		"folke/which-key.nvim",
-		enabled = false,
+		lazy = false,
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -205,7 +201,7 @@ return {
 	-- AI Assistance
 	{
 		"Exafunction/codeium.vim",
-		lazy = false,
+		lazy = 'false',
 	},
 
 	-- Quickfix Enhancements

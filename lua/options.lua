@@ -1,4 +1,4 @@
-require("nvchad.options")
+require "nvchad.options"
 
 local signs = { Error = "󰚌 ", Warn = " ", Hint = "󰲉 ", Info = " " }
 for type, icon in pairs(signs) do
