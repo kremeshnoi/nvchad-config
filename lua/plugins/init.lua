@@ -140,7 +140,7 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		enabled = false,
+		lazy = false,
 	},
 
 	-- Git Integration
