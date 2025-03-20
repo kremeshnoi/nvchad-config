@@ -2,6 +2,7 @@ return {
 	-- Formatters & Linters
 	{
 		"stevearc/conform.nvim",
+		lazy = false,
 		event = "BufWritePre",
 		config = function()
 			require("configs.conform")
@@ -101,6 +102,20 @@ return {
 	},
 
 	-- UI Enhancements
+	{
+	  "nvchad/ui",
+	  lazy = false,
+	   config = function()
+		 require "nvchad" 
+	   end
+	},
+	{
+	   "nvchad/base46",
+	   lazy = false,
+	   build = function()
+		 require("base46").load_all_highlights()
+	   end,
+	},
 	{
 		"stevearc/dressing.nvim",
 		lazy = false,
