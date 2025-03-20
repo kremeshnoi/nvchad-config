@@ -196,10 +196,6 @@ return {
 	},
 
 	-- AI Assistance
-	{
-		"Exafunction/codeium.vim",
-		lazy = 'false',
-	},
 
 	-- Quickfix Enhancements
 	{
