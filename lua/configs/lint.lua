@@ -2,7 +2,6 @@ require("lint").linters_by_ft = {
 	lua = { "selene" },
 	rust = { "bacon" },
 	php = { "phpstan" },
-	ruby = { "rubocop" },
 	css = { "stylelint" },
 	javascript = { "eslint_d" },
 	typescript = { "eslint_d" },
