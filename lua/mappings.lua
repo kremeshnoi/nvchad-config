@@ -1,4 +1,4 @@
-require "nvchad.options"
+require "nvchad.mappings"
 
 local map = vim.keymap.set
 
