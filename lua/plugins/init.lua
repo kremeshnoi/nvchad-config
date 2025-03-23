@@ -1,220 +1,187 @@
 return {
-	-- Formatters & Linters
-	{
-		"stevearc/conform.nvim",
-		lazy = false,
-		event = "BufWritePre",
-		config = function()
-			require("configs.conform")
-		end,
-	},
-	{
-		"williamboman/mason.nvim",
-		lazy = false,
-		opts = {
-			ensure_installed = {
-				-- Linters
-				"bacon",
-				"selene",
-				"phpstan",
-				"eslint_d",
-				"stylelint",
-				-- Formatters
-				"stylua",
-				"prettier",
-				"php-cs-fixer",
-				"sql-formatter",
-				-- LSPs
-				"taplo",
-				"sqlls",
-				"lemminx",
-				"css-lsp",
-				"phpactor",
-				"html-lsp",
-				"eslint-lsp",
-				"rust-analyzer",
-				"lua-language-server",
-				"vue-language-server",
-				"yaml-language-server",
-				"some-sass-language-server",
-				"typescript-language-server",
-				"dockerfile-language-server",
-				"tailwindcss-language-server",
-				"docker-compose-language-server",
-				"graphql-language-service-cli",
-			},
-		},
-	},
+  -- Formatters
+  {
+    "stevearc/conform.nvim",
+    lazy = false,
+    event = "BufWritePre",
+    config = function()
+      require "configs.conform"
+    end,
+  },
 
-	-- LSP & Completion
-	{
-		"neovim/nvim-lspconfig",
-		lazy = false,
-		config = function()
-		  require "configs.lspconfig"
-		end,
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		lazy = false,
-	},
+  -- Linters
+  {
+    "mfussenegger/nvim-lint",
+    lazy = false,
+    event = "BufWritePost",
+    config = function()
+      require "configs.lint"
+    end,
+  },
+ 
+  -- LSP & Completion
+  {
+    "neovim/nvim-lspconfig",
+    lazy = false,
+    config = function()
+      require "configs.lspconfig"
+    end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    lazy = false,
+  },
 
-	-- Treesitter (Syntax Highlighting & Parsing)
-	{
-		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
-		opts = {
-			ensure_installed = {
-				"bash",
-				"cmake",
-				"css",
-				"csv",
-				"dockerfile",
-				"dot",
-				"editorconfig",
-				"gitcommit",
-				"gitignore",
-				"graphql",
-				"html",
-				"http",
-				"javascript",
-				"jsdoc",
-				"json",
-				"lua",
-				"make",
-				"markdown",
-				"php",
-				"phpdoc",
-				"ruby",
-				"rust",
-				"scheme",
-				"scss",
-				"sql",
-				"toml",
-				"typescript",
-				"vim",
-				"vimdoc",
-				"vue",
-				"xml",
-				"yaml",
-			},
-		},
-	},
+  -- Plugin Managers
+  {
+    "williamboman/mason.nvim",
+    lazy = false,
+    dependencies = {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+    },
+    config = function()
+      require "configs.mason"
+    end,
+  },
 
-	-- UI Enhancements
-	{
-	  "nvchad/ui",
-	  lazy = false,
-	   config = function()
-		 require "nvchad" 
-	   end
-	},
-	{
-	   "nvchad/base46",
-	   lazy = false,
-	   build = function()
-		 require("base46").load_all_highlights()
-	   end,
-	},
-	{
-		"stevearc/dressing.nvim",
-		lazy = false,
-		opts = {},
-	},
-	{
-		"nvzone/minty",
-		lazy = false,
-		cmd = { "Shades", "Huefy" },
-	},
-	{
-		"nvzone/volt",
-		lazy = false,
-	},
-	{
-		"nvzone/menu",
-		lazy = false,
-	},
-	{
-		"nvim-tree/nvim-web-devicons",
-		lazy = false,
-	},
-	{
-		"nvim-tree/nvim-tree.lua",
-		lazy = false,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("configs.nvim-tree")
-		end,
-	},
-	{
-		"folke/trouble.nvim",
-		lazy = false,
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		lazy = false,
-	},
+  -- Treesitter (Syntax Highlighting & Parsing)
+  {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      require "configs.treesitter"
+    end,
+  },
 
-	-- Git Integration
-	{
-		"tpope/vim-fugitive",
-		lazy = false,
-	},
-	{
-		"rbong/vim-flog",
-		lazy = false,
-		cmd = { "Flog", "Flogsplit", "Floggit" },
-		dependencies = {
-			"tpope/vim-fugitive",
-		},
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-		lazy = false,
-	},
-	{
-		"sindrets/diffview.nvim",
-		lazy = false,
-	},
+  -- UI Enhancements
+  {
+    "nvchad/ui",
+    lazy = false,
+    config = function()
+      require "nvchad"
+    end,
+  },
+  {
+    "nvchad/base46",
+    lazy = false,
+    build = function()
+      require("base46").load_all_highlights()
+    end,
+  },
+  {
+    "stevearc/dressing.nvim",
+    lazy = false,
+    opts = {},
+  },
+  {
+    "nvzone/minty",
+    lazy = false,
+    cmd = { "Shades", "Huefy" },
+  },
+  {
+    "nvzone/volt",
+    lazy = false,
+  },
+  {
+    "nvzone/menu",
+    lazy = false,
+  },
+  {
+    "nvim-tree/nvim-web-devicons",
+    lazy = false,
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require "configs.nvim-tree"
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    lazy = false,
+  },
 
-	-- Search & Navigation
-	{
-		"nvim-telescope/telescope.nvim",
-		lazy = false,
-		tag = "0.1.8",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	{
-		"ggandor/leap.nvim",
-		lazy = false,
-		config = function()
-			require("leap").add_default_mappings(true)
-		end,
-	},
+  -- Git Integration
+  {
+    "tpope/vim-fugitive",
+    lazy = false,
+  },
+  {
+    "rbong/vim-flog",
+    lazy = false,
+    cmd = { "Flog", "Flogsplit", "Floggit" },
+    dependencies = {
+      "tpope/vim-fugitive",
+    },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    lazy = false,
+  },
+  {
+    "sindrets/diffview.nvim",
+    lazy = false,
+  },
 
-	-- Miscellaneous Helpers
-	{
-		"wakatime/vim-wakatime",
-		lazy = false,
-	},
-	{
-		"folke/which-key.nvim",
-		lazy = false,
-	},
-	{
-		"folke/todo-comments.nvim",
-		lazy = false,
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
+  -- Miscellaneous Helpers
+  {
+    "wakatime/vim-wakatime",
+    lazy = false,
+  },
+  {
+    "folke/which-key.nvim",
+    lazy = false,
+  },
+  {
+    "folke/todo-comments.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
 
-	-- AI Assistance
+  -- Search & Navigation
+  {
+    "nvim-telescope/telescope.nvim",
+    lazy = false,
+    tag = "0.1.8",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  {
+    "ggandor/leap.nvim",
+    lazy = false,
+    config = function()
+      require("leap").add_default_mappings(true)
+    end,
+  },
 
-	-- Quickfix Enhancements
-	{
-		"kevinhwang91/nvim-bqf",
-		lazy = false,
-	},
+  -- AI Assistance
+  {
+    "github/copilot.vim",
+    lazy = false,
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    lazy = false,
+    dependencies = {
+      { "github/copilot.vim" },
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken",
+    opts = {},
+  },
+
+  -- Quickfix Enhancements
+  {
+    "kevinhwang91/nvim-bqf",
+    lazy = false,
+  },
 }
