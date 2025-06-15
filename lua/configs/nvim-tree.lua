@@ -1,17 +1,29 @@
-require("nvim-tree").setup({
-	renderer = {
-		icons = {
-			glyphs = {
-				git = {
-					unstaged = "M",
-					staged = "S",
-					unmerged = "U",
-					renamed = "R",
-					untracked = "N",
-					deleted = "D",
-					ignored = "I",
-				},
-			},
-		},
-	},
-})
+require("nvim-tree").setup {
+  view = {
+    width = 40,
+  },
+  renderer = {
+    icons = {
+      glyphs = {
+        git = {
+          unstaged = "󰺕",
+          staged = "󰐾",
+          unmerged = "",
+          renamed = "",
+          untracked = "",
+          deleted = "󰧧",
+          ignored = "󰘓",
+        },
+      },
+    },
+  },
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = "󰲉 ",
+      info = "󰲼 ",
+      warning = " ",
+      error = "󰯈 ",
+    },
+  },
+}

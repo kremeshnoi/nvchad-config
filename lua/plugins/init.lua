@@ -18,7 +18,7 @@ return {
       require "configs.lint"
     end,
   },
- 
+
   -- LSP & Completion
   {
     "neovim/nvim-lspconfig",
@@ -161,22 +161,6 @@ return {
     config = function()
       require("leap").add_default_mappings(true)
     end,
-  },
-
-  -- AI Assistance
-  {
-    "github/copilot.vim",
-    lazy = false,
-  },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    lazy = false,
-    dependencies = {
-      { "github/copilot.vim" },
-      { "nvim-lua/plenary.nvim", branch = "master" },
-    },
-    build = "make tiktoken",
-    opts = {},
   },
 
   -- Quickfix Enhancements

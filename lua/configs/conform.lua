@@ -1,9 +1,8 @@
-require("conform").setup({
+require("conform").setup {
   formatters_by_ft = {
     sql = { "sqlfmt" },
     lua = { "stylua" },
     css = { "stylelint" },
-    php = { "php-cs-fixer" },
     html = { "prettier" },
     javascript = { "prettier" },
     typescript = { "prettier" },
@@ -14,4 +13,4 @@ require("conform").setup({
     timeout_ms = 500,
     lsp_fallback = true,
   },
-})
+}

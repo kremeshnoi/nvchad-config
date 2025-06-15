@@ -1,4 +1,4 @@
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "bash",
     "cmake",
@@ -18,8 +18,6 @@ require("nvim-treesitter.configs").setup({
     "lua",
     "make",
     "markdown",
-    "php",
-    "phpdoc",
     "rust",
     "scheme",
     "scss",
@@ -28,14 +26,17 @@ require("nvim-treesitter.configs").setup({
     "typescript",
     "vim",
     "vimdoc",
-    "vue",
     "xml",
     "yaml",
   },
+  sync_install = false,
+  auto_install = true,
+  ignore_install = {},
   highlight = {
     enable = true,
   },
   indent = {
     enable = true,
   },
-})
+  modules = {},
+}

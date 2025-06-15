@@ -3,68 +3,80 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 local servers = {
-    -- lua
-    "lua_ls",
-    -- javascript & typescript
-    "ts_ls",
-    -- sql
-    "sqlls",
-    -- php
-    "phpactor",
-    -- vue
-    "vuels",
-    -- css
-    "cssls",
-    -- html
-    "html",
-    -- rust
-    "rust_analyzer",
-    -- tailwind
-    "tailwindcss",
-    -- docker
-	  "dockerls",
+  -- javascript & typescript
+  "ts_ls",
+  -- sql
+  "sqlls",
+  -- css
+  "cssls",
+  -- html
+  "html",
+  -- tailwind
+  "tailwindcss",
+  -- docker
+  "dockerls",
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
-		on_attach = nvlsp.on_attach,
-		on_init = nvlsp.on_init,
-		capabilities = nvlsp.capabilities,
-	})
+  lspconfig[lsp].setup {
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
+  }
 end
 
-lspconfig.ts_ls.setup{
-  init_options = {
-    plugins = {
-      {
-        name = "@vue/typescript-plugin",
-        location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-        languages = {"javascript", "typescript", "vue"},
+-- lua
+lspconfig.lua_ls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT",
+        path = vim.split(package.path, ";"),
+      },
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          vim.env.VIMRUNTIME,
+          vim.fn.stdpath "config",
+          vim.fn.stdpath "data",
+        },
+        checkThirdParty = false,
+      },
+      telemetry = {
+        enable = false,
       },
     },
   },
-  filetypes = {
-    "javascript",
-    "typescript",
-    "vue",
-  },
 }
 
-lspconfig.rust_analyzer.setup({
-	on_attach = function(_, bufnr)
-		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-	end,
-})
+-- rust
+lspconfig.rust_analyzer.setup {
+  on_attach = function(client, bufnr)
+    nvlsp.on_attach(client, bufnr)
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
 
+-- docker
 lspconfig.dockerls.setup {
-    settings = {
-        docker = {
-	      languageserver = {
-	        formatter = {
-		    ignoreMultilineInstructions = true,
-		    },
-	    },
-	  }
-  }
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    docker = {
+      languageserver = {
+        formatter = {
+          ignoreMultilineInstructions = true,
+        },
+      },
+    },
+  },
 }

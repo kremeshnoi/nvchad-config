@@ -1,6 +1,6 @@
 require("mason").setup()
 
-require("mason-tool-installer").setup({
+require("mason-tool-installer").setup {
   ensure_installed = {
     -- Linters
 
@@ -10,8 +10,6 @@ require("mason-tool-installer").setup({
     "eslint_d",
     -- sql
     "sqlfmt",
-    -- php
-    "phpstan",
     -- css
     "stylelint",
 
@@ -23,8 +21,6 @@ require("mason-tool-installer").setup({
     "prettier",
     -- sql
     "sqlfmt",
-    -- php
-    "php-cs-fixer",
 
     -- LSPs
 
@@ -34,10 +30,6 @@ require("mason-tool-installer").setup({
     "typescript-language-server",
     -- sql
     "sqlls",
-    -- php
-    "phpactor",
-    -- vue
-    "vue-language-server",
     -- css
     "css-lsp",
     -- html
@@ -54,8 +46,8 @@ require("mason-tool-installer").setup({
   run_on_start = true,
   start_delay = 3000,
   integrations = {
-    ['mason-lspconfig'] = true,
-    ['mason-null-ls'] = true,
-    ['mason-nvim-dap'] = true,
+    ["mason-lspconfig"] = true,
+    ["mason-null-ls"] = true,
+    ["mason-nvim-dap"] = true,
   },
-})
+}
