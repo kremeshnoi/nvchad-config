@@ -1,4 +1,7 @@
 require("nvim-tree").setup {
+  filters = {
+    enable = false,
+  },
   view = {
     width = 40,
   },
@@ -11,7 +14,7 @@ require("nvim-tree").setup {
           unmerged = "",
           renamed = "",
           untracked = "",
-          deleted = "󰧧",
+          deleted = "",
           ignored = "󰘓",
         },
       },
